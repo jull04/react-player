@@ -6,10 +6,6 @@
   align-items: center;
 }
 
-.video-app-grey {
-  background-color: gray;
-}
-
 .video-app__controls {
   text-align: center;
   margin: 40px 0;
@@ -34,12 +30,18 @@
 }
 
 .video-player__container {
-  padding: 24px 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.55);
+  z-index: 0;
 }
 
 .video-player {
   width: 800px;
-  margin: 0 auto;
+  margin: 50px auto;
   border-radius: 2px;
   overflow: hidden;
   position: relative;
@@ -70,7 +72,6 @@
   align-items: center;
   z-index: 10;
   border-top: 1px solid #f0f0f0;
-
 }
 
 .control-button {
@@ -89,18 +90,10 @@
   min-height: 36px;
 }
 
-.control-button--play {
-  
-}
-
 .control-button--play:hover {
   opacity: 0.8;
   border-color: #096dd9;
   color: #096dd9;
-}
-
-.control-button--pause {
-  
 }
 
 .control-button--pause:hover {
@@ -109,22 +102,10 @@
   color: #096dd9;
 }
 
-.control-button--minimize {
-  
-}
-
 .control-button--minimize:hover {
   opacity: 0.8;
   border-color: #096dd9;
   color: #096dd9;
-}
-
-.control-button--maximize {
-  
-}
-
-.control-button--maximize:hover {
-  
 }
 
 .control-button--close {
@@ -209,7 +190,6 @@
 }
 
 @media (max-width: 480px) {
-
   .button-group {
     flex-wrap: wrap;
     justify-content: center;
