@@ -1,38 +1,265 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+.video-app {
+  padding: 40px;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.video-app-grey {
+  background-color: gray;
+}
+
+.video-app__controls {
+  text-align: center;
+  margin: 40px 0;
+}
+
+.video-app__controls--hidden {
+  display: none;
+}
+
+.video-app__title {
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.video-app__title-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.video-player__container {
+  padding: 24px 0;
+}
+
+.video-player {
+  width: 800px;
+  margin: 0 auto;
+  border-radius: 2px;
+  overflow: hidden;
+  position: relative;
+  background-color: #fff;
+  transition: all 0.3s ease;
+  padding: 16px 24px;
+}
+
+.video-player--minimized {
+  width: 400px;
+}
+
+.video-player__video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.video-player__controls {
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: white;
+  padding-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 10;
+  border-top: 1px solid #f0f0f0;
+
+}
+
+.control-button {
+  border: none;
+  padding: 11px;
+  background: #fff;
+  border: 1px solid #d9d9d9;
+  border-radius: 100%;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  min-height: 36px;
+}
+
+.control-button--play {
+  
+}
+
+.control-button--play:hover {
+  opacity: 0.8;
+  border-color: #096dd9;
+  color: #096dd9;
+}
+
+.control-button--pause {
+  
+}
+
+.control-button--pause:hover {
+  opacity: 0.8;
+  border-color: #096dd9;
+  color: #096dd9;
+}
+
+.control-button--minimize {
+  
+}
+
+.control-button--minimize:hover {
+  opacity: 0.8;
+  border-color: #096dd9;
+  color: #096dd9;
+}
+
+.control-button--maximize {
+  
+}
+
+.control-button--maximize:hover {
+  
+}
+
+.control-button--close {
+  border: none;
+  opacity: 0.5;
+}
+
+.control-button--close:hover {
+  opacity: 1;
+}
+
+.control-button__icon {
+  margin-right: 6px;
+  width: 16px;
+  height: 16px;
+}
+
+.button-group {
+  display: flex;
+  gap: 8px;
+}
+
+.open-button {
+  padding: 15px 30px;
+  font-size: 18px;
+  background-color: #3498db;
   color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  min-width: 200px;
 }
 
-.App-link {
-  color: #61dafb;
+.open-button:hover {
+  background-color: #2980b9;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-@keyframes App-logo-spin {
+.open-button:active {
+  transform: translateY(0);
+}
+
+.state-info {
+  margin-top: 20px;
+  padding: 15px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  width: 100%;
+}
+
+.state-info__title {
+  color: #2c3e50;
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+}
+
+.state-info__list {
+  list-style: none;
+}
+
+.state-info__item {
+  margin-bottom: 8px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.state-info__label {
+  color: #7f8c8d;
+  font-weight: 500;
+}
+
+.state-info__value {
+  color: #2c3e50;
+  font-weight: 600;
+}
+
+@keyframes fadeIn {
   from {
-    transform: rotate(0deg);
+    opacity: 0;
+    transform: translateY(20px);
   }
   to {
-    transform: rotate(360deg);
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.video-player {
+  animation: fadeIn 0.3s ease-out;
+}
+
+@media (max-width: 850px) {
+  .video-app {
+    padding: 20px;
+  }
+
+  .video-player {
+    width: 85%;
+  }
+
+  .video-player--minimized {
+    width: 300px;
+  }
+
+  .video-app__title {
+    font-size: 16px;
+  }
+
+  .control-button {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+
+  .open-button {
+    padding: 12px 24px;
+    font-size: 16px;
+  }
+
+  .control-button--minimize {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .video-player__controls {
+    
+  }
+
+  .button-group {
+    flex-wrap: wrap;
+    justify-content: center;
   }
 }
