@@ -152,7 +152,6 @@
   border: 2px solid #8585ff;
   border-radius: 5px;
   cursor: pointer;
-  transition: all 0.3s ease;
   display: flex;
   height: 150px;
   justify-content: center;
@@ -161,7 +160,6 @@
   background: transparent;
   align-items: center;
 }
-
 
 @keyframes fadeIn {
   from {
@@ -211,9 +209,6 @@
 }
 
 @media (max-width: 480px) {
-  .video-player__controls {
-    
-  }
 
   .button-group {
     flex-wrap: wrap;
