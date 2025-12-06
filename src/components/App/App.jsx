@@ -1,8 +1,9 @@
 import React, { useRef, useEffect } from "react";
 import { useMachine } from "@xstate/react";
-import { videoPlayerMachine } from "./machines/videoPlayerMachine";
-import { MaxIcon, MinIcon, PlayIcon, StopIcon, CloseIcon, OpenIcon } from "./utils/Icons";
+import { videoPlayerMachine } from "../../machines/videoPlayerMachine";
+import { MaxIcon, MinIcon, PlayIcon, StopIcon, CloseIcon, OpenIcon } from "../../utils/Icons";
 import "./App.css";
+import Preloader from "../Preloader/Preloader";
 
 function App() {
   const [state, send] = useMachine(videoPlayerMachine);
@@ -75,12 +76,17 @@ function App() {
               </button>
             </div>
             <div className="video-player-container">
+            {state.context.loading && (
+    <Preloader />
+  )}
               <video
                 ref={videoRef}
                 src={url}
                 className="video-player__video"
                 onError={(e) => console.log("Ошибка видео:", e)}
                 controls={false}
+                onLoadStart={() => send({ type: "LOAD_START" })}
+                onLoadedData={() => send({ type: "LOADED" })}
               />
             </div>
             <div className="video-player__controls">
